@@ -1,0 +1,16 @@
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    username: root
+    password: cqm135535..
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/myblog
+  mail:
+    host: smtp.qq.com
+    password: rigpklocdjjqigjb
+    username: 1370263092@qq.com
+mybatis:
+  type-aliases-package: com.example.myblog.vo
+  configuration:
+    map-underscore-to-camel-case: true
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.example.myblog.mapper.UserMapper">
+    <select id="findAll" resultType="UserVo">
+        select u.*, r.role_name from user u inner join role r on u.role_id = r.role_id
+    </select>
+    <select id="findByEmail" parameterType="String" resultType="UserVO">
+        select u.*, r.role_name from user u inner join role r on u.role_id = r.role_id where u.user_mail = #{user_email}
+    </select>
+    <select id="findByUserName" parameterType="String" resultType="UserVo">
+<bind name="pattern_username" value="'%'+username+'%'"/>
+        select u.*, r.role_name from user u inner join role r on u.role_id = r.role_id where u.user_name like #{pattern_username}
+    </select>
+</mapper>
