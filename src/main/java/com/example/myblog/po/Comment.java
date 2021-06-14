@@ -15,5 +15,5 @@ public class Comment {
     private Integer userId;         //评论用户
     private Long commentTime;    // 评论时间
     private Integer articleId;      //对应的文章ID 逻辑外键
-    private Integer readed;         //1:已读  0：未读
+    private int readed;         //1:已读  0：未读
 }

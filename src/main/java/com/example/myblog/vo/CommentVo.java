@@ -9,5 +9,5 @@ import java.util.List;
 @Data
 public class CommentVo extends Comment {
     private String userName;        //用户名
-    private String articleName;     //文章名称
+    private String articleTitle;     //文章名称
 }

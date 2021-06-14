@@ -26,13 +26,18 @@ public class ArticleServiceImp implements ArticleService {
     }
 
     @Override
-    public List<ArticleVo> findAllOrById(Integer id) {
-        return articleMapper.findAllOrById(id);
+    public List<ArticleVo> find(Article article) {
+        return articleMapper.findAllOrById(article);
     }
 
     @Override
     public List<ArticleVo> findByTitle(String title) {
         return articleMapper.findByTitle(title);
+    }
+
+    @Override
+    public int delByClassifyId(int classifyId) {
+        return articleMapper.delByClassifyId(classifyId);
     }
 
 

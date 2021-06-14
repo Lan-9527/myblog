@@ -17,8 +17,8 @@ public class ReplyServiceImp implements ReplyService {
     @Autowired
     private ReplyMapper replyMapper;
     @Override
-    public void add(Reply reply) {
-        replyDao.save(reply);
+    public Reply add(Reply reply) {
+        return replyDao.saveAndFlush(reply);
     }
 
     @Override
@@ -28,5 +28,10 @@ public class ReplyServiceImp implements ReplyService {
     @Override
     public List<ReplyVo> selByRepliedUserId(int id) {
         return replyMapper.findByRepliedUserId(id);
+    }
+
+    @Override
+    public Reply findById(Integer id) {
+        return replyDao.findById(id).get();
     }
 }

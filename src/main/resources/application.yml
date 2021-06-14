@@ -7,10 +7,11 @@ spring:
     url: jdbc:mysql://localhost:3306/myblog
   mail:
     host: smtp.qq.com
-    password: rigpklocdjjqigjb
+    password: fikubmugczkpigjj
     username: 1370263092@qq.com
 mybatis:
-  type-aliases-package: com.example.myblog.vo
+  type-aliases-package: com.example.myblog.vo, com.example.myblog.po
   configuration:
     map-underscore-to-camel-case: true
-
+server:
+  port: 8081

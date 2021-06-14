@@ -7,6 +7,7 @@ import java.util.List;
 @Mapper
 public interface UserMapper {
     List<UserVo> findAll(); //查询所有用户
-    UserVo findByEamil(String user_email); //通过邮箱查询用户
+    UserVo findByEmail(String user_email); //通过邮箱查询用户
     List<UserVo> findByUserName(String username);
+    void delByIdList(int[] id);
 }

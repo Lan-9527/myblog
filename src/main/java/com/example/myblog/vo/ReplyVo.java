@@ -7,5 +7,6 @@ import lombok.Data;
 public class ReplyVo extends Reply {
     private String replyUserName;   //回复人的ID
     private String repliedUserName;     //被回复人的ID
-    private String articleName;     //文章名称
+    private int articleId; //文章ID
+    private String articleTitle;     //文章名称
 }

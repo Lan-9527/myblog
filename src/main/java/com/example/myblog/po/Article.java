@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-
 @Data // 文章表
 public class Article {
     @Id

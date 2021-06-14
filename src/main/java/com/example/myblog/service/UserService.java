@@ -12,4 +12,5 @@ public interface UserService {
     User findById(int id);
     UserVo findByEmail(String user_email);
     List<UserVo> findByUserName(String username);
+    void delByIdList(int[] id);
 }

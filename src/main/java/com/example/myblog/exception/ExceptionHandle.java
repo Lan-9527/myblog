@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 @RestControllerAdvice
 public class ExceptionHandle {
-    @ExceptionHandler(ServiceException.class)
+    @ExceptionHandler({ServiceException.class})
     public ResultVo serviceException(ServiceException e){
         return ResultVo.failMsg(e.getMessage());
     }
@@ -16,7 +16,7 @@ public class ExceptionHandle {
     }
     @ExceptionHandler(Exception.class)
     public ResultVo excption(Exception e){
-        return ResultVo.failMsg("未知异常");
+        return ResultVo.failMsg("未知异常"+e.getMessage());
     }
 
 }

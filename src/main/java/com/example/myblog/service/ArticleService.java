@@ -9,6 +9,7 @@ import java.util.List;
 public interface ArticleService {
     void addAndUpdate(Article article);
     void delById(int id);
-    List<ArticleVo> findAllOrById(Integer id);
+    List<ArticleVo> find(Article article);
     List<ArticleVo> findByTitle(String title);
+    int delByClassifyId(int classifyId);
 }

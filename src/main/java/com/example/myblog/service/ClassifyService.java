@@ -5,7 +5,7 @@ import com.example.myblog.po.Classify;
 import java.util.List;
 
 public interface ClassifyService {
-    void addAndUpdate(Classify classify);
+    Classify addAndUpdate(Classify classify);
     void delById(Integer id);
     Classify findById(Integer id);
     List<Classify> findAll();

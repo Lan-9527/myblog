@@ -33,7 +33,7 @@ public class CommentServiceImp implements CommentService {
     }
 
     @Override
-    public int delById(int id) {
+    public int delById(int[] id) {
         return commentMapper.delById(id);
     }
 }

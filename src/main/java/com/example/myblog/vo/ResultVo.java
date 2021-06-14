@@ -18,6 +18,7 @@ public class ResultVo<T>{
         this.data = data;
         return this;
     }
+
     public static ResultVo create(Integer code, String msg){
         return new ResultVo(code, msg);
     }

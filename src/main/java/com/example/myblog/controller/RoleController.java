@@ -18,12 +18,15 @@ public class RoleController {
 
     /**
      * 添加或者更新管理员
-     * @param role
+     * @param
      * @return
      */
-    @PostMapping("/addAndUpdate")
-    public ResultVo addAndUpdate(Role role){
-        if (role.getRoleName().length() > 5) throw new ServiceException("管理员名称不能大于五个字符");
+    @GetMapping("/add")
+    public ResultVo addAndUpdate(String roleName){
+        if (roleName.length() > 5) throw new ServiceException("管理员名称不能大于五个字符");
+        Role role = new Role();
+        role.setRoleName(roleName);
+        role.setRoleId(2);
         roleService.addAndUpdate(role);
         return ResultVo.success("添加管理员成功");
     }
@@ -34,8 +37,8 @@ public class RoleController {
      * @return
      */
     @GetMapping("/delById")
-    public ResultVo delById(Integer id){
-        if(id == null) throw new ServiceException("参数不能为空");
+    public ResultVo delById(int id){
+        if(id == 0) throw new ServiceException("参数不能为空");
         roleService.delById(id);
         return ResultVo.success("删除管理员成功");
     }

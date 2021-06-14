@@ -6,7 +6,8 @@ import com.example.myblog.vo.ReplyVo;
 import java.util.List;
 
 public interface ReplyService {
-    void add(Reply reply);
+    Reply add(Reply reply);
     void delById(int id);
     List<ReplyVo> selByRepliedUserId(int id);
+    Reply findById(Integer id);
 }

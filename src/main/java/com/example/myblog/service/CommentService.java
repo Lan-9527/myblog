@@ -10,5 +10,5 @@ public interface CommentService {
     void add(Comment comment);
     List<CommentVo> findAll();
     List<CommentReplyVo> findByArticleId(int id);
-    int delById(int id);
+    int delById(int[] id);
 }

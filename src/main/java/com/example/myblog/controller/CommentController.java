@@ -1,13 +1,11 @@
 package com.example.myblog.controller;
 
 import com.example.myblog.component.DateTimeFormat;
+import com.example.myblog.config.GetUserID;
 import com.example.myblog.exception.ServiceException;
 import com.example.myblog.po.Comment;
 import com.example.myblog.service.CommentService;
-import com.example.myblog.vo.CommentVo;
 import com.example.myblog.vo.ResultVo;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 public class CommentController {
     @Autowired
     private CommentService commentService;
-
     /**
      * 添加评论
      * @param comment
@@ -24,26 +21,20 @@ public class CommentController {
      */
     @PostMapping("/add")
     public ResultVo add(Comment comment){
-        if (comment.getCommentId() != null) throw new NullPointerException("评论ID");
+        if (comment.getCommentId() != null) throw new NullPointerException("评论不能更新");
         if (comment.getCommentContent().length() > 300) throw new ServiceException("评论内容不能大于300字符");
-        if (comment.getUserId() == null || comment.getArticleId() == null) throw  new ServiceException("评论失败");
+        comment.setUserId(GetUserID.getUserVo().getUserId());
+        comment.setCommentId(0);
         comment.setCommentTime(DateTimeFormat.toInstant());
-
+        System.out.println(comment);
         commentService.add(comment);
         return ResultVo.success("评论成功");
 
     }
-    /**
-     * 查询所有评论
-     * @param pageNum
-     * @param pageSize
-     * @return
-     */
-    @GetMapping("/findAll")
-    public ResultVo findAll(@RequestParam(defaultValue = "1") Integer  pageNum, Integer pageSize){
-        PageHelper.startPage(pageNum,pageSize);
-        PageInfo<CommentVo> commentVoPageInfo = new PageInfo<>(commentService.findAll());
-        return ResultVo.successAndData(commentVoPageInfo);
+
+    @GetMapping("/find")
+    public ResultVo find(){
+        return ResultVo.successAndData(commentService.findAll());
     }
 
     /**
@@ -57,7 +48,8 @@ public class CommentController {
 
     }
     @GetMapping("delById")
-    public ResultVo delById(int id){
+    public ResultVo delById(int[] id){
+        System.out.println(id);
         if(commentService.delById(id)>0) return ResultVo.success("删除成功");
         return ResultVo.failMsg("删除失败");
     }

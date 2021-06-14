@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.example.myblog.mapper.ReplyMapper">
     <select id="findByRepliedUserId" resultType="ReplyVo" parameterType="int">
-        select r.*, a.aritcle_title, u.user_name reply_user_name, u1.user_name replied_user_name
-        from reply r inner join article a on r.article_id = a.article_id inner join user u on r.reply_user_id = u.user_id inner join user u1 on r.replied_user_id = u1.user_id
-        where r.readed = 0 and r.replied_user_id = #{id}
+        select r.*, a.article_title, a.article_id, u.user_name reply_user_name, u1.user_name replied_user_name
+        from reply r  inner join user u on r.reply_user_id = u.user_id inner join user u1 on r.replied_user_id = u1.user_id
+        inner join comment c on r.comment_id = c.comment_id inner join article a on c.article_id = a.article_id where r.readed = 0 and r.replied_user_id = #{id}
     </select>
 </mapper>
